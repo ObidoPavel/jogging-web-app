@@ -17,13 +17,13 @@ import java.sql.SQLException;
 @Configuration
 @PropertySource("classpath:${spring.profiles.active}.properties")
 @Profile("local")
-public class LocalConfiguration implements EnvironmentConfiguration {
+public class LocalConfiguration {
 
-    @Override
+    @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
-        vendorAdapter.setGenerateDdl(false);
+        vendorAdapter.setGenerateDdl(true);
         vendorAdapter.setDatabase(Database.H2);
         return vendorAdapter;
     }
@@ -33,10 +33,9 @@ public class LocalConfiguration implements EnvironmentConfiguration {
         return Server.createWebServer();
     }
 
-    @Override
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).setName("local")
-                .addScript("classpath:db/schema.sql").addScript("classpath:db/initial-data.sql")
+                .addScript("classpath:db/initial-data.sql")
                 .build();
     }
 }

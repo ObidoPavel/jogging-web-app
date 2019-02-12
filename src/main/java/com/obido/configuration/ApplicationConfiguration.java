@@ -23,7 +23,7 @@ import java.util.Map;
 class ApplicationConfiguration {
 
     @Autowired
-    private EnvironmentConfiguration environmentConfiguration;
+    private LocalConfiguration environmentConfiguration;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws SQLException {
