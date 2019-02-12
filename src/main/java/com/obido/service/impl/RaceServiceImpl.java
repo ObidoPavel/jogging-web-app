@@ -52,39 +52,23 @@ public class RaceServiceImpl implements RaceService {
         return raceRepository.save(mapToRaceEntity(userId, raceBean)).getId();
     }
 
-    private boolean validateRaceBean(RaceBean raceBean) {
-        return raceBean != null
-                && raceBean.getDate() != null
-                && raceBean.getDistance() != null
-                && raceBean.getDuration() != null;
-    }
-
-    private Race mapToRaceEntity(Long userId, RaceBean raceBean) {
-        Race raceEntity = new Race();
-        raceEntity.setUser(new User(userId));
-        raceEntity.setId(raceBean.getId());
-        raceEntity.setDistance(raceBean.getDistance());
-        raceEntity.setDuration(raceBean.getDuration());
-        raceEntity.setDate(new Timestamp(raceBean.getDate().getTime()));
-        return raceEntity;
-    }
-
-    private RaceBean mapToRaceBean(Race raceEntity) {
-        RaceBean raceBean = new RaceBean();
-        raceBean.setId(raceEntity.getId());
-        raceBean.setDistance(raceEntity.getDistance());
-        raceBean.setDuration(raceEntity.getDuration());
-        raceBean.setDate(timestampToDate(raceEntity.getDate()));
-        return raceBean;
-    }
-
     @Override
     public void deleteRace(Long raceId) {
+        if (raceId == null) {
+            throw new BadRequestException(String.format("No raceId in request!"));
+        }
+
         raceRepository.deleteById(raceId);
     }
 
     @Override
     public void update(Long userId, RaceBean raceBean) {
+        if (userId == null) {
+            throw new BadRequestException(String.format("No userId in request!"));
+        }
+        if (!validateRaceBean(raceBean)) {
+            throw new BadRequestException("Invalid raceBean provided");
+        }
         raceRepository.save(mapToRaceEntity(userId, raceBean));
     }
 
@@ -111,4 +95,29 @@ public class RaceServiceImpl implements RaceService {
         return new Date(timestampTimeLong);
     }
 
+    private boolean validateRaceBean(RaceBean raceBean) {
+        return raceBean != null
+                && raceBean.getDate() != null
+                && raceBean.getDistance() != null
+                && raceBean.getDuration() != null;
+    }
+
+    private Race mapToRaceEntity(Long userId, RaceBean raceBean) {
+        Race raceEntity = new Race();
+        raceEntity.setUser(new User(userId));
+        raceEntity.setId(raceBean.getId());
+        raceEntity.setDistance(raceBean.getDistance());
+        raceEntity.setDuration(raceBean.getDuration());
+        raceEntity.setDate(new Timestamp(raceBean.getDate().getTime()));
+        return raceEntity;
+    }
+
+    private RaceBean mapToRaceBean(Race raceEntity) {
+        RaceBean raceBean = new RaceBean();
+        raceBean.setId(raceEntity.getId());
+        raceBean.setDistance(raceEntity.getDistance());
+        raceBean.setDuration(raceEntity.getDuration());
+        raceBean.setDate(timestampToDate(raceEntity.getDate()));
+        return raceBean;
+    }
 }
