@@ -20,12 +20,16 @@ import org.springframework.util.StringUtils;
 public class SecurityServiceImpl implements SecurityService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SecurityServiceImpl.class);
+
     @Autowired
     private AuthenticationManager authenticationManager;
+
     @Autowired
     private UserDetailsService userDetailsService;
+
     @Autowired
     private UserService userService;
+
     @Autowired
     private SecurityService securityService;
 

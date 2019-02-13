@@ -30,7 +30,7 @@ public class PictureServiceImpl implements PictureService {
 
     private URI getFileDownloadUrl(String fileName) {
         return ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/pictures/")
+                .path("/images/")
                 .path(fileName)
                 .build().toUri();
     }

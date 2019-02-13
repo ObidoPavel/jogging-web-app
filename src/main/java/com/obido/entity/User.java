@@ -17,9 +17,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Jog> jogEntities;
     @Id
-    @SequenceGenerator(name = "jogging_seq", sequenceName = "public.jogging_seq",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jogging_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false, precision = 9)
     private Long id;
     @Column(name = "login", length = 100)

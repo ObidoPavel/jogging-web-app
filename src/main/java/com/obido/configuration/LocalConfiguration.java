@@ -33,6 +33,7 @@ public class LocalConfiguration {
         return Server.createWebServer();
     }
 
+    @Bean
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).setName("local")
                 .addScript("classpath:db/initial-data.sql")

@@ -1,4 +1,4 @@
-package com.obido.runner;
+package com.obido;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,13 +1,14 @@
 package com.obido.repository;
 
 import com.obido.domain.AverageReportBean;
+import com.obido.entity.Jog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface AverageReportRepository extends JpaRepository<AverageReportBean, Long> {
+public interface AverageReportRepository extends JpaRepository<Jog, Long> {
 
     @Query(
             value = "SELECT EXTRACT(WEEK FROM date) AS numberOfWeek, " +
