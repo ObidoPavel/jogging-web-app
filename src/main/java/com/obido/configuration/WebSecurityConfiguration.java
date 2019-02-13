@@ -43,12 +43,14 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login", "/registration").permitAll()
                 .antMatchers("/images/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
                 .and()
                 .logout()
                 .permitAll()
+                .and().headers().frameOptions().sameOrigin()
                 .and().csrf().disable();
     }
 }
