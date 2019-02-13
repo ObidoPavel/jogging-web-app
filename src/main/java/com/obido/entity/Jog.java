@@ -9,10 +9,10 @@ import java.sql.Timestamp;
 
 @EqualsAndHashCode
 @Entity
-@Table(schema = "PUBLIC", name = "JOGGING_RACE")
+@Table(schema = "PUBLIC", name = "JOG")
 @Getter
 @Setter
-public class Race {
+public class Jog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,10 +32,10 @@ public class Race {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Race() {
+    public Jog() {
     }
 
-    public Race(Double distance, Timestamp date, Long duration, User user) {
+    public Jog(Double distance, Timestamp date, Long duration, User user) {
         this.distance = distance;
         this.date = date;
         this.duration = duration;

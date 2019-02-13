@@ -2,7 +2,7 @@ package com.obido.service.impl;
 
 import com.obido.domain.PictureBin;
 import com.obido.service.PictureService;
-import com.obido.service.RaceService;
+import com.obido.service.JogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class PictureServiceImpl implements PictureService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RaceService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JogService.class);
 
     @Override
     public PictureBin save(MultipartFile file) {

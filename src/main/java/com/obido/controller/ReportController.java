@@ -17,7 +17,7 @@ class ReportController {
     private AverageReportService reportService;
 
     @RequestMapping(value = "/reports/{userId}", method = RequestMethod.GET)
-    public List<AverageReportBean> retrieveUserRaces(@PathVariable Long userId) {
+    public List<AverageReportBean> retrieveUserJogs(@PathVariable Long userId) {
         return reportService.createReport(userId);
     }
 }

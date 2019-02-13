@@ -9,7 +9,7 @@ import java.sql.Date;
 @EqualsAndHashCode
 @Getter
 @Setter
-public class RaceBean {
+public class JogBean {
 
     private Long id;
 

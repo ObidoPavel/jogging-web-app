@@ -15,7 +15,7 @@ import java.util.List;
 public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    List<Race> raceEntities;
+    List<Jog> jogEntities;
     @Id
     @SequenceGenerator(name = "jogging_seq", sequenceName = "public.jogging_seq",
             allocationSize = 1)

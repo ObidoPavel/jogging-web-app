@@ -13,7 +13,7 @@ public class AverageReportRepositoryImpl implements AverageReportRepository {
     private static final String REPORT_QUERY = "SELECT EXTRACT(WEEK FROM date) AS numberOfWeek, " +
             "AVG(distance/duration) AS avgSpeed, " +
             "AVG(duration) AS avgDuration, " +
-            "SUM(distance) AS sumDist FROM JOGGING_RACE " +
+            "SUM(distance) AS sumDist FROM JOG " +
             "WHERE user_id = :userId GROUP BY numberOfWeek";
 
     @Autowired
